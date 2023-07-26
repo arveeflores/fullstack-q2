@@ -7,7 +7,7 @@ dotenv.config()
 
 
     app.listen(7000)
-console.log('App running http://localhost:7000')
+console.log('App running')
 
 const uri = process.env.ATLAS_URI;
 //create and/or connect to a db
@@ -37,3 +37,21 @@ const arvee = new Student({
   .catch(function (err) {
     console.log(err);
   });
+
+
+  app.get('/', (req, res) => {
+    const arvee = new Student({
+      name: "Arvee Flores",
+      sid: 300366643
+    });
+  
+    Student.insertMany([arvee])
+    .then(function () {
+      
+      mongoose.connection.close();
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+    res.send({entry:arvee});
+    });
