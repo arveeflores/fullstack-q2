@@ -47,12 +47,5 @@ const Student = mongoose.model("examrecord", studentSchema);
     });
   
     Student.insertMany([arvee])
-    .then(function () {
-      
-      mongoose.connection.close();
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
     res.send({entry:arvee});
     });
