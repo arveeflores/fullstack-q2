@@ -1,13 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+const dotenv = require('dotenv')
+
+dotenv.config()
+
 
     app.listen(7000)
 console.log('App running http://localhost:7000')
 
-
+const uri = process.env.ATLAS_URI;
 //create and/or connect to a db
-mongoose.connect("mongodb://localhost:27017/Exams23002", {
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
